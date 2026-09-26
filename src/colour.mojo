@@ -1,8 +1,8 @@
 """Colour conversion, difference, and appearance kernels over float64 buffers."""
 
-from std.algorithm import parallelize
-from std.gpu import global_idx
-from std.gpu.host import DeviceContext
+from max.algorithm import parallelize
+from max.gpu import global_idx
+from max.gpu.host import DeviceContext
 from std.math import atan2, cbrt, cos, exp, pow, sin, sqrt
 from std.sys.info import simd_width_of
 
@@ -417,12 +417,13 @@ def jzazbz_range(
         dst[3 * i + 2] = v[2]
 
 
-def jzazbz_gpu_kernel(src: Ptr, dst: Ptr, n: Int, inverse: Int):
+def jzazbz_gpu_kernel(src: Ptr, dst: Ptr, n: Int64, inverse: Int32):
     var i = Int(global_idx.x)
-    if i < n:
+    var inverse_flag = inverse != 0
+    if i < Int(n):
         var v = (
             jz_inverse(src[3 * i], src[3 * i + 1], src[3 * i + 2])
-            if inverse != 0
+            if inverse_flag
             else jz_forward(src[3 * i], src[3 * i + 1], src[3 * i + 2])
         )
         dst[3 * i] = v[0]
@@ -473,8 +474,8 @@ def mcs_jzazbz_gpu(
         ctx.enqueue_function[jzazbz_gpu_kernel](
             device_src,
             device_dst,
-            n,
-            inverse,
+            Int64(n),
+            Int32(inverse),
             grid_dim=grid_size,
             block_dim=block_size,
         )
