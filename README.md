@@ -98,7 +98,7 @@ this machine; a speedup below 1 means Mojo is slower.
 | Kernel | Mojo | colour-science | Speedup |
 |---|---:|---:|---:|
 | sRGB_to_XYZ (1M) | 108.84 ms | 367.20 ms | 3.37x |
-| XYZ_to_Lab (1M) | 21.49 ms | 142.70 ms | 6.64x |
+| XYZ_to_Lab (1M) | 15.52 ms | 149.74 ms | 9.65x |
 | Lab_to_XYZ (1M) | 6.98 ms | 124.02 ms | 17.78x |
 | XYZ_to_Oklab (1M) | 157.53 ms | 261.49 ms | 1.66x |
 | XYZ_to_Jzazbz (1M) | 41.93 ms | 493.28 ms | 11.76x |
