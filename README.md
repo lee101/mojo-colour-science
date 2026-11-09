@@ -97,14 +97,14 @@ this machine; a speedup below 1 means Mojo is slower.
 
 | Kernel | Mojo | colour-science | Speedup |
 |---|---:|---:|---:|
-| sRGB_to_XYZ (1M) | 103.65 ms | 375.34 ms | 3.62x |
-| XYZ_to_Lab (1M) | 25.03 ms | 264.29 ms | 10.56x |
-| Lab_to_XYZ (1M) | 8.46 ms | 157.35 ms | 18.61x |
-| XYZ_to_Oklab (1M) | 135.08 ms | 347.57 ms | 2.57x |
-| XYZ_to_Jzazbz (1M) | 37.50 ms | 593.11 ms | 15.82x |
-| XYZ_to_Jzazbz GPU (1M) | 17.30 ms | 744.59 ms | 43.04x |
-| delta_E CIE 2000 (1M) | 273.76 ms | 725.05 ms | 2.65x |
-| XYZ_to_CAM16 (1M, H off) | 69.08 ms | 757.64 ms | 10.97x |
+| sRGB_to_XYZ (1M) | 108.84 ms | 367.20 ms | 3.37x |
+| XYZ_to_Lab (1M) | 21.49 ms | 142.70 ms | 6.64x |
+| Lab_to_XYZ (1M) | 6.98 ms | 124.02 ms | 17.78x |
+| XYZ_to_Oklab (1M) | 157.53 ms | 261.49 ms | 1.66x |
+| XYZ_to_Jzazbz (1M) | 41.93 ms | 493.28 ms | 11.76x |
+| XYZ_to_Jzazbz GPU (1M) | 7.06 ms | 487.32 ms | 69.05x |
+| delta_E CIE 2000 (1M) | 277.55 ms | 632.06 ms | 2.28x |
+| XYZ_to_CAM16 (1M, H off) | 53.23 ms | 559.36 ms | 10.51x |
 
 All measured kernels were faster in this run. `XYZ_to_Lab` processes
 hardware-width float64 SIMD batches with a scalar tail. Lab, Jzazbz, and CAM16
